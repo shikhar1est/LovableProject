@@ -5,16 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Plan {
+public class Project {
     Long id;
     String name;
-    String stripeProjectId;
-    Integer maxProjects;
-    Integer maxTokensPerDay;
-    Integer maxPreviews; //limited previews are allowed as they consume resources
-    Boolean unlimitedAI;
-    Boolean active;
+    User owner;
+    Boolean isPublic=false;
+    Instant createdAt;
+    Instant updatedAt;
+    Instant deletedAt;
 }
