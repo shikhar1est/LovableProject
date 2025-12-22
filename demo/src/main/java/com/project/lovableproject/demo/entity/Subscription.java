@@ -1,6 +1,6 @@
 package com.project.lovableproject.demo.entity;
 
-import com.project.lovableproject.demo.SubscriptionStatus;
+import com.project.lovableproject.demo.enums.SubscriptionStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

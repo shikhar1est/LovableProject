@@ -1,5 +1,6 @@
 package com.project.lovableproject.demo.entity;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,13 +11,13 @@ import java.time.Instant;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProjectFile {
+public class Preview {
     Long id;
     Project project;
-    String path;
-    String minioObjectKey;
+    String namespace;
+    String podname;
+    String previewUrl;
     Instant createdAt;
-    Instant updatedAt;
-    User createdBy;
-    User updatedBy;
+    Instant startedAt;
+    Instant terminatedAt;
 }
