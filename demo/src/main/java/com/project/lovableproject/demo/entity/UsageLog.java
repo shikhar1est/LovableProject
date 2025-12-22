@@ -1,7 +1,5 @@
 package com.project.lovableproject.demo.entity;
 
-import com.project.lovableproject.demo.enums.PreviewStatus;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +10,13 @@ import java.time.Instant;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Preview {
+public class UsageLog {
     Long id;
+    User user;
     Project project;
-    String namespace;
-    String podname;
-    String previewUrl;
+    String action;
+    Integer tokensUsed;
+    Integer durationMs;
+    String metaData;
     Instant createdAt;
-    Instant startedAt;
-    Instant terminatedAt;
-    PreviewStatus status;
 }
