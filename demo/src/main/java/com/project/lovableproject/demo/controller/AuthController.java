@@ -1,7 +1,15 @@
 package com.project.lovableproject.demo.controller;
 
+import com.project.lovableproject.demo.dto.auth.AuthResponse;
+import com.project.lovableproject.demo.dto.auth.LoginRequest;
+import com.project.lovableproject.demo.dto.auth.SignupRequest;
+import com.project.lovableproject.demo.dto.auth.UserProfileResponse;
 import com.project.lovableproject.demo.service.AuthService;
+import com.project.lovableproject.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,4 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 public class AuthController {
     private AuthService authService;
+    private UserService userService;
+
+    @PostMapping("/signup")
+    public ResponseEntity<AuthResponse> signup(SignupRequest request){
+        return ResponseEntity.ok(authService.signup(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(LoginRequest request){
+        return ResponseEntity.ok(authService.login(request));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserProfileResponse> getProfile(){
+        Long userId=1L;
+        return ResponseEntity.ok(userService.getProfile(userId));
+    }
 }

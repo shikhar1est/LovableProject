@@ -1,9 +1,8 @@
 package com.project.lovableproject.demo.dto.auth;
 
-public record UserProfileResponse(
-        Long id,
+public record SignupRequest(
         String email,
         String name,
-        String avatarUrl
+        String password
 ) {
 }
