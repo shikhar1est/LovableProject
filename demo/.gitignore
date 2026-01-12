@@ -32,4 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-**/application.yaml
+# Spring Boot config
+application.yaml
+
+
