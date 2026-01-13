@@ -33,6 +33,6 @@ build/
 .vscode/
 
 # Spring Boot config
-application.yaml
+demo/src/main/resources/application.yaml
 demo/src/main/resources/application.properties
 
