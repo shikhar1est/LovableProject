@@ -34,5 +34,5 @@ build/
 
 # Spring Boot config
 application.yaml
-
+demo/src/main/resources/application.properties
 

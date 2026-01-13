@@ -2,7 +2,7 @@ package com.project.lovableproject.demo.controller;
 
 import com.project.lovableproject.demo.dto.member.InviteMemberRequest;
 import com.project.lovableproject.demo.dto.member.MemberResponse;
-import com.project.lovableproject.demo.entity.ProjectMember;
+import com.project.lovableproject.demo.dto.member.UpdateMemberRoleRequest;
 import com.project.lovableproject.demo.service.ProjectMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class ProjectMemberController {
     private final ProjectMemberService projectMemberService;
 
     @GetMapping
-    public ResponseEntity<List<ProjectMember>> getProjectMembers(
+    public ResponseEntity<List<MemberResponse>> getProjectMembers(
             @PathVariable Long projectId
     ){
         Long userId=1L;
@@ -39,7 +39,7 @@ public class ProjectMemberController {
     public ResponseEntity<MemberResponse> updateMemberRole(
             @PathVariable Long projectId,
             @PathVariable Long memberId,
-            @RequestBody InviteMemberRequest request
+            @RequestBody UpdateMemberRoleRequest request
     ){
           Long userId=1L;
           return ResponseEntity.ok(projectMemberService.updateMemberRole(projectId,memberId,request,userId));
