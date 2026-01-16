@@ -5,11 +5,9 @@ import com.project.lovableproject.demo.enums.ProjectRole;
 import java.time.Instant;
 
 public record UserProfileResponse(
-        Long userId,
+        Long id,
         String email,
         String name,
-        String avatarUrl,
-        ProjectRole role,
-        Instant invitedAt
+        String avatarUrl
 ) {
 }
