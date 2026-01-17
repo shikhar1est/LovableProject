@@ -9,5 +9,6 @@ public record UserProfileResponse(
         String email,
         String name,
         String avatarUrl
+//url
 ) {
 }
