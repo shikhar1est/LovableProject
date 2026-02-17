@@ -5,6 +5,7 @@ import com.project.lovableproject.demo.dto.project.ProjectResponse;
 import com.project.lovableproject.demo.dto.project.ProjectSummaryResponse;
 import com.project.lovableproject.demo.entity.Project;
 import com.project.lovableproject.demo.entity.User;
+import com.project.lovableproject.demo.error.ResourceNotFoundException;
 import com.project.lovableproject.demo.mapper.ProjectMapper;
 import com.project.lovableproject.demo.repository.ProjectRepositoy;
 import com.project.lovableproject.demo.repository.UserRepository;
@@ -73,7 +74,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     //Internal function so as to DRY
-    public Project getAccessibleProjectByUserId(Long id,Long userId){
-        return projectRepositoy.findAccessibleProjectById(id,userId).orElseThrow();
+    public Project getAccessibleProjectByUserId(Long projectId,Long userId){
+        return projectRepositoy.findAccessibleProjectById(projectId,userId).orElseThrow(
+                () -> new ResourceNotFoundException("Project", projectId.toString())
+        );
     }
 }
