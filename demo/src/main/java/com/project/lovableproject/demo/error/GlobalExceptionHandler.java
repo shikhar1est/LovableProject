@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
-
+//exception handler
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -39,5 +39,4 @@ public class GlobalExceptionHandler {
         log.error(apiError.toString(), ex);
         return ResponseEntity.status(apiError.status()).body(apiError);
     }
-
 }
