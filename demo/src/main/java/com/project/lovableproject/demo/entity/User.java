@@ -3,6 +3,8 @@ package com.project.lovableproject.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -18,10 +20,12 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    String email;
-    String passwordHash;
+    String username;
+    String password;
     String avatarUrl;
+    @CreationTimestamp
     Instant createdAt;
+    @UpdateTimestamp
     Instant updatedAt;
     Instant deletedAt;
 }

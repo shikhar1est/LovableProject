@@ -29,7 +29,6 @@ public class Project {
     @Column(nullable = false)
     String name;
 
-
     Boolean isPublic=false;
 
     @CreationTimestamp
