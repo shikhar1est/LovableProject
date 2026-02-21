@@ -4,9 +4,13 @@ import com.project.lovableproject.demo.dto.project.ProjectRequest;
 import com.project.lovableproject.demo.dto.project.ProjectResponse;
 import com.project.lovableproject.demo.dto.project.ProjectSummaryResponse;
 import com.project.lovableproject.demo.entity.Project;
+import com.project.lovableproject.demo.entity.ProjectMember;
+import com.project.lovableproject.demo.entity.ProjectMemberId;
 import com.project.lovableproject.demo.entity.User;
+import com.project.lovableproject.demo.enums.ProjectRole;
 import com.project.lovableproject.demo.error.ResourceNotFoundException;
 import com.project.lovableproject.demo.mapper.ProjectMapper;
+import com.project.lovableproject.demo.repository.ProjectMemberRepository;
 import com.project.lovableproject.demo.repository.ProjectRepositoy;
 import com.project.lovableproject.demo.repository.UserRepository;
 import com.project.lovableproject.demo.service.ProjectService;
@@ -28,15 +32,27 @@ public class ProjectServiceImpl implements ProjectService {
     ProjectRepositoy projectRepositoy;
     UserRepository userRepository;
     ProjectMapper projectMapper;
+    ProjectMemberRepository projectMemberRepository;
 
     @Override
     public ProjectResponse createProject(ProjectRequest request, Long userId) {
         User owner=userRepository.findById(userId).orElseThrow();
         Project project=Project.builder()
                 .name(request.name())
-                .owner(owner)
                 .build();
         project=projectRepositoy.save(project);
+
+        ProjectMemberId projectMemberId=new ProjectMemberId(project.getId(), owner.getId());
+        ProjectMember projectMember = ProjectMember.builder()
+                .id(projectMemberId)
+                .projectRole(ProjectRole.OWNER)
+                .user(owner)
+                .acceptedAt(Instant.now())
+                .invitedAt(Instant.now())
+                .project(project)
+                .build();
+
+        projectMemberRepository.save(projectMember);
         return projectMapper.toProjectResponse(project);
     }
     @Override
@@ -66,9 +82,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public void softDelete(Long id, Long userId) {
         Project project=getAccessibleProjectByUserId(id,userId);
-        if (!project.getOwner().getId().equals(userId)){
-            throw new RuntimeException("You are not the owner of this project");
-        }
         project.setDeletedAt(Instant.now());
         projectRepositoy.save(project);
     }

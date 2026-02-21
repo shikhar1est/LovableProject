@@ -34,15 +34,10 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     @Override
     public List<MemberResponse> getProjectMembers(Long projectId, Long userId) {
-        Project project=getAccessibleProjectByUserId(projectId,userId);
-        List<MemberResponse> memberResponseList=new ArrayList<>();
-        memberResponseList.add(projectMemberMapper.toProjectMemberResponseFromOwner(project.getOwner()));
-        memberResponseList.addAll(
-        projectMemberRepository.findByIdProjectId(projectId)
+        return projectMemberRepository.findByIdProjectId(projectId)
                 .stream()
                 .map(projectMemberMapper::toProjectMemberResponseFromMember)
-                .toList());
-        return memberResponseList;
+                .toList();
     }
     //comm
 
