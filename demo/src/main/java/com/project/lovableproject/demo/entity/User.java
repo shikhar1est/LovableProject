@@ -22,7 +22,6 @@ public class User {
     String name;
     String username;
     String password;
-    String avatarUrl;
     @CreationTimestamp
     Instant createdAt;
     @UpdateTimestamp
