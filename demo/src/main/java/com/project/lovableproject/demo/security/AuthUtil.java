@@ -1,12 +1,14 @@
 package com.project.lovableproject.demo.security;
 
 import com.project.lovableproject.demo.entity.User;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
 @Component
 public class AuthUtil {
@@ -18,6 +20,12 @@ public class AuthUtil {
     }
 
     public String generateAccessToken(User user){
-
+        return Jwts.builder()
+                .subject(user.getUsername())
+                .claim("userId", user.getId().toString())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000*60*100))
+                .signWith(getSecretKey())
+                .compact();
     }
 }
