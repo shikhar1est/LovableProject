@@ -51,5 +51,5 @@ public class ProjectMemberController {
         projectMemberService.removeProjectMember(projectId, memberId);
         return ResponseEntity.noContent().build();
     }
-/h
+
 }
