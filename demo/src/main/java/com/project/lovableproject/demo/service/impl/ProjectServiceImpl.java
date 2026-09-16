@@ -12,6 +12,7 @@ import com.project.lovableproject.demo.error.BadRequestException;
 import com.project.lovableproject.demo.error.ResourceNotFoundException;
 import com.project.lovableproject.demo.mapper.ProjectMapper;
 import com.project.lovableproject.demo.repository.ProjectMemberRepository;
+import com.project.lovableproject.demo.repository.ProjectRepository;
 import com.project.lovableproject.demo.repository.ProjectRepositoy;
 import com.project.lovableproject.demo.repository.UserRepository;
 import com.project.lovableproject.demo.security.AuthUtil;

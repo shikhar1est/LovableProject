@@ -9,7 +9,7 @@ import com.project.lovableproject.demo.entity.ProjectMemberId;
 import com.project.lovableproject.demo.entity.User;
 import com.project.lovableproject.demo.mapper.ProjectMemberMapper;
 import com.project.lovableproject.demo.repository.ProjectMemberRepository;
-import com.project.lovableproject.demo.repository.ProjectRepositoy;
+import com.project.lovableproject.demo.repository.ProjectRepository;
 import com.project.lovableproject.demo.repository.UserRepository;
 import com.project.lovableproject.demo.security.AuthUtil;
 import com.project.lovableproject.demo.service.ProjectMemberService;
@@ -21,7 +21,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
