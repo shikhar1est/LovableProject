@@ -19,4 +19,4 @@ public interface ProjectMapper {
     List<ProjectSummaryResponse> toListOfProjectSummaryResponse(List<Project> projects);
 
 }
-//a
+//
