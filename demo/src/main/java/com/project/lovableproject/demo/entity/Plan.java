@@ -1,20 +1,32 @@
 package com.project.lovableproject.demo.entity;
 
+import jakarta.persistence.Entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
 public class Plan {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     String name;
-    String stripeProjectId;
+
+    @Column(unique = true)
+    String stripePriceId;
+
     Integer maxProjects;
     Integer maxTokensPerDay;
-    Integer maxPreviews; //limited previews are allowed as they consume resources
-    Boolean unlimitedAI;
+    Integer maxPreviews; //max number of previews allowed per plan
+    Boolean unlimitedAi; //unlimited access to LLM, ignore maxTokensPerDay if true
+
     Boolean active;
 }
+
