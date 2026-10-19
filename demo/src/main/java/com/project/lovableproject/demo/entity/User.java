@@ -23,18 +23,24 @@ import java.util.List;
 public class User implements UserDetails {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
+
     String username;
     String password;
+    String name;
+
+    @Column(unique = true)
+    String stripeCustomerId;
+
     @CreationTimestamp
     Instant createdAt;
+
     @UpdateTimestamp
     Instant updatedAt;
-    Instant deletedAt;
+
+    Instant deletedAt; //soft delete
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
-
 }
