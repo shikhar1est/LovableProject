@@ -9,6 +9,7 @@ import com.project.lovableproject.demo.entity.Subscription;
 import com.project.lovableproject.demo.entity.User;
 import com.project.lovableproject.demo.enums.SubscriptionStatus;
 import com.project.lovableproject.demo.error.ResourceNotFoundException;
+import com.project.lovableproject.demo.mapper.SubscriptionMapper;
 import com.project.lovableproject.demo.repository.PlanRepository;
 import com.project.lovableproject.demo.repository.ProjectMemberRepository;
 import com.project.lovableproject.demo.repository.SubscriptionRepository;
