@@ -2,9 +2,7 @@ package com.project.lovableproject.demo.entity;
 
 import com.project.lovableproject.demo.enums.SubscriptionStatus;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,6 +12,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Subscription {
 
     @Id
@@ -31,7 +33,7 @@ public class Subscription {
     @Enumerated(value = EnumType.STRING)
     SubscriptionStatus status;
 
-    String stripeSubscriptionId; //can be renamed to gatewaySubscriptionId
+    String stripeSubscriptionId;
 
     Instant currentPeriodStart;
     Instant currentPeriodEnd;

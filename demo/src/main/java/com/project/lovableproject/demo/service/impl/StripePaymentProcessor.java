@@ -204,6 +204,8 @@ public class StripePaymentProcessor implements PaymentProcessor {
     }
 
 
+    /// // Utility Methods
+
     private User getUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() ->
                 new ResourceNotFoundException("user", userId.toString()));
