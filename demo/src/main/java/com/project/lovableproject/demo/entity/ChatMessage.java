@@ -1,4 +1,4 @@
-package com.project.lovableproject.demo.entity;
+package main.java.com.project.lovableproject.demo.entity;
 
 import com.project.lovableproject.demo.enums.MessageRole;
 import lombok.AccessLevel;
